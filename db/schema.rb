@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 7) do
+ActiveRecord::Schema.define(version: 2019_08_21_222925) do
 
   create_table "actors", force: :cascade do |t|
     t.string "first_name"
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 7) do
     t.integer "actor_id"
     t.integer "show_id"
     t.string "catchphrase"
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer "actor_id"
+    t.integer "friend_id"
+    t.index ["actor_id"], name: "index_friendships_on_actor_id"
+    t.index ["friend_id"], name: "index_friendships_on_friend_id"
   end
 
   create_table "networks", force: :cascade do |t|
